@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchOneGame, fetchPlayers } from '../actions/games/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import JoinGameDialog from '../components/games/JoinGameDialog'
+import { updateGame } from '../actions/games/update'
 import './PlayingField.css'
 
 const playerShape = PropTypes.shape({
@@ -46,6 +47,10 @@ class Game extends PureComponent {
     if (game && !game.players[0].name) {
       this.props.fetchPlayers(game)
     }
+  }
+
+  update(){
+    return this.props.updateGame(game)
   }
 
   render() {
@@ -93,5 +98,6 @@ const mapStateToProps = ({ currentUser, games }, { match }) => {
 export default connect(mapStateToProps, {
   subscribeToWebsocket,
   fetchOneGame,
-  fetchPlayers
+  fetchPlayers,
+  updateGame
 })(Game)
