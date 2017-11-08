@@ -1,0 +1,12 @@
+.playingfield {
+  height: 640px;
+  width: 640px;
+}
+
+.field {
+  display: inline-block;
+  margin: 0px;
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+}
