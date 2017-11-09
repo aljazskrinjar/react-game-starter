@@ -50,7 +50,6 @@ class Game extends PureComponent {
     }
   }
   update(index){
-    
     const { game } = this.props
     this.props.updateGame(game,index)
   }
