@@ -6,7 +6,6 @@ import { connect as subscribeToWebsocket } from '../actions/websocket'
 import JoinGameDialog from '../components/games/JoinGameDialog'
 import { updateGame } from '../actions/games/update'
 import './PlayingField.css'
-import '../index.css'
 
 
 const playerShape = PropTypes.shape({
