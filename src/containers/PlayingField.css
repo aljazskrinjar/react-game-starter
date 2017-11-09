@@ -1,12 +1,61 @@
 .playingfield {
-  height: 640px;
-  width: 640px;
+  height: 620px;
+  width: 620px;
+  margin: 50px;
 }
 
 .field {
-  display: inline-block;
+  position: relative;
+  float: left;
   margin: 0px;
   height: 200px;
   width: 200px;
-  border: 2px solid black;
+  border: 3px solid black;
+}
+
+.field p {
+  font-family: 'Permanent Marker', sans-serif;
+  position: relative;
+  font-size: 100px;
+  bottom: 60px;
+  left: 65px;
+}
+
+#field0 {
+  border-left: none;
+  border-top: none;
+}
+
+#field1 {
+  border-top: none;
+}
+
+#field2 {
+  border-right: none;
+  border-top: none;
+}
+
+#field3 {
+  border-left: none;
+}
+
+#field4 {
+}
+
+#field5 {
+  border-right: none;
+}
+
+#field6 {
+  border-left: none;
+  border-bottom: none;
+}
+
+#field7 {
+  border-bottom: none;
+}
+
+#field8 {
+  border-right: none;
+  border-bottom: none;
 }
