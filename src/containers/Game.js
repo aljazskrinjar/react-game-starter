@@ -6,6 +6,8 @@ import { connect as subscribeToWebsocket } from '../actions/websocket'
 import JoinGameDialog from '../components/games/JoinGameDialog'
 import { updateGame } from '../actions/games/update'
 import './PlayingField.css'
+import '../index.css'
+
 
 const playerShape = PropTypes.shape({
   userId: PropTypes.string.isRequired,
@@ -54,11 +56,22 @@ class Game extends PureComponent {
     const { hasTurn } = this.props
     const { currentPlayer } = this.props
 
-    if (hasTurn) {
-    this.props.updateGame(game,index,currentPlayer)
-  } else {
-    console.log('NOT YOUR TURN')
+    if (hasTurn) { this.props.updateGame(game,index,currentPlayer) }
   }
+
+  turn(){
+    const { hasTurn } = this.props
+    if (hasTurn) {return "It's your turn"}
+    else {return "Wait for your turn"}
+  }
+
+  winOrLose(){
+    const { game } = this.props
+    const { currentPlayer } = this.props
+
+    if (game.winner === ''){return ""}
+    if (game.winner === currentPlayer.userId){return "You win!"}
+    if (game.winner !== currentPlayer.userId){return "You lose!"}
   }
 
   render() {
@@ -72,13 +85,13 @@ class Game extends PureComponent {
 
     return (
       <div className="Game">
-        <h1>Game!</h1>
-        <p>{title}</p>
-
-        <h1>YOUR GAME HERE! :)</h1>
+        <h1>TIC TAC TOE</h1>
+        <h3>{title}</h3>
+        <h2>{ this.turn() }</h2>
+        <h2>{ this.winOrLose() }</h2>
 
         <div className="playingfield">
-          { this.props.game.fields.map( (field,index) => <div onClick={this.update.bind(this, index)} className='field' key={ index }> { field } </div>)}
+          { this.props.game.fields.map( (field,index) => <div onClick={this.update.bind(this, index)} className='field' id={ `field${index}` } key={ index }><p>{ field }</p></div>)}
         </div>
 
         <h2>Debug Props</h2>
