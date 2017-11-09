@@ -37,6 +37,7 @@ class Game extends PureComponent {
     const { game, fetchOneGame, subscribeToWebsocket } = this.props
     const { gameId } = this.props.match.params
 
+
     if (!game) { fetchOneGame(gameId) }
     subscribeToWebsocket()
   }
@@ -49,9 +50,6 @@ class Game extends PureComponent {
     }
   }
 
-  update(){
-    return this.props.updateGame(game)
-  }
 
   render() {
     const { game } = this.props
@@ -70,7 +68,7 @@ class Game extends PureComponent {
         <h1>YOUR GAME HERE! :)</h1>
 
         <div className="playingfield">
-          { this.props.game.fields.map( (field,index) => <div className='field' key={ index }> { field } </div>)}
+          { this.props.game.fields.map( (field,index) => <div onClick={() => {this.props.updateGame(game)}} className='field' key={ index }> { field } </div>)}
         </div>
 
         <h2>Debug Props</h2>
