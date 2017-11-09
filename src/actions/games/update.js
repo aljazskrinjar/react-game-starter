@@ -9,7 +9,7 @@ import {
 
 const api = new API()
 
-export const updateGame = (game) => {
+export const updateGame = (game,body) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
