@@ -9,11 +9,11 @@ import {
 
 const api = new API()
 
-export const updateGame = (game,index) => {
+export const updateGame = (game,index,currentPlayer) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-    api.patch(`/games/${game._id}`, {index} )
+    api.patch(`/games/${game._id}`, {index, ...currentPlayer} )
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
