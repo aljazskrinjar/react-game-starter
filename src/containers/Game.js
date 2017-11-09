@@ -49,9 +49,10 @@ class Game extends PureComponent {
       this.props.fetchPlayers(game)
     }
   }
-  update(){
+  update(index){
+    
     const { game } = this.props
-    this.props.updateGame(game)
+    this.props.updateGame(game,index)
   }
 
   render() {
@@ -71,7 +72,7 @@ class Game extends PureComponent {
         <h1>YOUR GAME HERE! :)</h1>
 
         <div className="playingfield">
-          { this.props.game.fields.map( (field,index) => <div onClick={this.update.bind(this)} className='field' key={ index }> { field } </div>)}
+          { this.props.game.fields.map( (field,index) => <div onClick={this.update.bind(this, index)} className='field' key={ index }> { field } </div>)}
         </div>
 
         <h2>Debug Props</h2>
