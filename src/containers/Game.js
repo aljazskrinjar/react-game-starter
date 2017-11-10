@@ -78,7 +78,7 @@ class Game extends PureComponent {
   clearGame(){
     const { game } = this.props
 
-    if (game.winner !== '') {this.props.clearGame(game)}
+    if (game.winner !== '' || game.draw === true) {this.props.clearGame(game)}
   }
 
   render() {
