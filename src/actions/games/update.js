@@ -27,3 +27,22 @@ export const updateGame = (game,index,currentPlayer) => {
       })
   }
 }
+
+export const clearGame = (game) => {
+  return dispatch => {
+    dispatch({ type: APP_LOADING })
+
+    api.put(`/games/${game._id}`, {...game} )
+      .then((result) => {
+        dispatch({ type: APP_DONE_LOADING })
+        dispatch({ type: LOAD_SUCCESS })
+      })
+      .catch((error) => {
+        dispatch({ type: APP_DONE_LOADING })
+        dispatch({
+          type: LOAD_ERROR,
+          payload: error.message
+        })
+      })
+  }
+}
