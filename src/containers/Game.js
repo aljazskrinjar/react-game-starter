@@ -54,8 +54,10 @@ class Game extends PureComponent {
     const { game } = this.props
     const { hasTurn } = this.props
     const { currentPlayer } = this.props
+    //const { fields } = this.props
+    console.log(game.fields)
 
-    if (hasTurn) { this.props.updateGame(game,index,currentPlayer) }
+    if (hasTurn && game.fields[index] === '') { this.props.updateGame(game,index,currentPlayer) }
   }
 
   turn(){
