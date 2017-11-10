@@ -8,7 +8,9 @@ export default class ApiClient {
   }
 
   constructor(host, options = {}) {
-    this.host = host || process.env.API_URL || 'http://localhost:3030'
+    this.host = process.env.NODE_ENV === 'production'
+      ? 'https://twenty-odometer.codaisseur.cloud' // WITHOUT the / !!!
+      : (host || 'http://localhost:3030')
     this.options = { ...this.defaultOptions, ...options }
   }
 
