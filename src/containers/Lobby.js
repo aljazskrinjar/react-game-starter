@@ -12,6 +12,7 @@ import WatchGameIcon from 'material-ui/svg-icons/image/remove-red-eye'
 import JoinGameIcon from 'material-ui/svg-icons/social/person-add'
 import PlayGameIcon from 'material-ui/svg-icons/hardware/videogame-asset'
 import WaitingIcon from 'material-ui/svg-icons/image/timelapse'
+import { removeGame } from '../actions/games/delete'
 import './Lobby.css'
 
 class Lobby extends PureComponent {
@@ -48,11 +49,14 @@ class Lobby extends PureComponent {
       .join(' vs ')
 
     return (
+      <div>
       <MenuItem
         key={index}
         onClick={this.goToGame(game._id)}
         rightIcon={<ActionIcon />}
         primaryText={title} />
+        <button onClick={ () => this.props.removeGame(game._id)}>Delete</button>
+        </div>
     )
   }
 
@@ -73,4 +77,4 @@ class Lobby extends PureComponent {
 
 const mapStateToProps = ({ games, currentUser }) => ({ games, currentUser })
 
-export default connect(mapStateToProps, { fetchGames, subscribeToWebsocket, fetchPlayers, push })(Lobby)
+export default connect(mapStateToProps, { removeGame, fetchGames, subscribeToWebsocket, fetchPlayers, push })(Lobby)
