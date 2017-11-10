@@ -55,6 +55,7 @@ class Game extends PureComponent {
     const { hasTurn } = this.props
     const { currentPlayer } = this.props
 
+    if (game.players.length === 1) return
     if (hasTurn && game.fields[index] === '' && game.winner === '') { this.props.updateGame(game,index,currentPlayer) }
   }
 
@@ -86,6 +87,7 @@ class Game extends PureComponent {
       <div className="Game">
         <h1>TIC TAC TOE</h1>
         <h3>{title}</h3>
+
         <h2>{ this.turn() }</h2>
         <h2>{ this.winOrLose() }</h2>
 
