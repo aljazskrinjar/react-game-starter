@@ -15,7 +15,7 @@ export const removeGame = (gameId) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-    api.get(`/games/${gameId}`)
+    api.delete(`/games/${gameId}`)
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })

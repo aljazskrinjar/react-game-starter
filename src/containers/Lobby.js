@@ -49,13 +49,13 @@ class Lobby extends PureComponent {
       .join(' vs ')
 
     return (
-      <div>
+      <div key={index}>
       <MenuItem
         key={index}
         onClick={this.goToGame(game._id)}
         rightIcon={<ActionIcon />}
         primaryText={title} />
-        <button onClick={ () => this.props.removeGame(game._id)}>Delete</button>
+        <button key={`key${index}`} onClick={ () => this.props.removeGame(game._id)}>Delete</button>
         </div>
     )
   }
