@@ -5,6 +5,7 @@ import { fetchOneGame, fetchPlayers } from '../actions/games/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import JoinGameDialog from '../components/games/JoinGameDialog'
 import { updateGame } from '../actions/games/update'
+import { clearGame } from '../actions/games/update'
 import './PlayingField.css'
 
 
@@ -74,6 +75,12 @@ class Game extends PureComponent {
     if (game.winner !== currentPlayer.userId){return "You lose!"}
   }
 
+  clearGame(){
+    const { game } = this.props
+
+    if (game.winner !== '') {this.props.clearGame(game)}
+  }
+
   render() {
     const { game } = this.props
 
@@ -87,6 +94,7 @@ class Game extends PureComponent {
       <div className="Game">
         <h1>TIC TAC TOE</h1>
         <h3>{title}</h3>
+        <button onClick={ this.clearGame.bind(this) }>New Game</button>
 
         <h2>{ this.turn() }</h2>
         <h2>{ this.winOrLose() }</h2>
@@ -121,5 +129,6 @@ export default connect(mapStateToProps, {
   subscribeToWebsocket,
   fetchOneGame,
   fetchPlayers,
-  updateGame
+  updateGame,
+  clearGame
 })(Game)
